@@ -26,7 +26,7 @@ app.get('/create/:name,:vinb,:vinr,:phein,:p1664', function(req, res) {
     function(err, record) { if (err) {console.error(err); return;} console.log(record.getId());
     CFMessage = [];
     CFMessage.push({"text" : record.getId()})
-    res.send({"messages":CFMessag9});
+    res.send({"messages":CFMessage});
     });  
 });
     
