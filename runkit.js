@@ -36,7 +36,9 @@ app.get('/create/:name,:vinb,:vinr,:phein,:p1664', function(req, res) {
         "Nb VR": Number(req.params.vinr),
         "Nb VB": Number(req.params.vinb),
         "Nb 1664": Number(req.params.p1664),
-        "Nb Hein": Number(req.params.phein)};
+        "Nb Hein": Number(req.params.phein),
+        "ETAT":"EN ATTENTE"};
+        
     
   //Crea un nuevo record en AirTable.
     base('Commandes').create(Create_req_formated, 
@@ -45,7 +47,7 @@ app.get('/create/:name,:vinb,:vinr,:phein,:p1664', function(req, res) {
         insertAirtableTokenL3 = record.getId().toUpperCase().slice(-3);
         CFMessage = [];
         CFMessage.push({"text" :""+_.capitalize(req.params.name)+", la commande est un big success"})
-        CFMessage.push({"text" : "Son indentifiant est le "+insertAirtableTokenL3})
+        CFMessage.push({"text" : "Son indentifiant est le "+_.capitalize(req.params.name)+"-"+insertAirtableTokenL3})
         CFMessage.push(
                 {
       "attachment": {
